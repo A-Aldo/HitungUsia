@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hitung Umur</title>
+
+    <style>
+      html,
+      body,
+      :root {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        border: 1px solid black;
+        margin: 200px auto;
+        padding: 16px;
+        width: 500px;
+        
+      }
+
+      #birthday {
+        padding: 16px;
+        font-size: 20px;
+        
+      }
+
+      /* #Check-btn{
+            padding: 16px;
+            background-color: #333;
+            color: whitesmoke;
+            cursor: pointer;
+        } */
+
+      #btn {
+        display: inline-block;
+        margin-top: 1rem;
+        width: 500px;
+        height: 50px;
+        padding: 1rem 4rem;
+        /* border-radius: 5rem; */
+        background: black;
+        color: #fff;
+        overflow: hidden;
+        position: relative;
+        z-index: 0;
+        font-size: 20px;
+      }
+
+      #btn::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        z-index: -1;
+        background: rgb(79, 67, 67);
+        color: black;
+        clip-path: polygon(0 0, 100% 0, 0 0, 0% 100%);
+        transition: 0.3s linear;
+      }
+
+      #btn:hover::before {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+      }
+
+      .label {
+        font-size: 18px;
+      }
+
+      .result {
+        font-size: 18px;
+        color: red;
+        margin-top: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Cek Usia Anda</h2>
+      <label for="">Masukkan tahun kelahiran anda</label>
+      <input
+        type="number"
+        placeholder="Contoh 2006"
+        id="birthday"
+      />
+      <button id="btn" onclick="CheckResult()">Hitung Umur</button>
+      <p class="result" id="result"> </p>
+    </div>
+
+
+    <script>
+        function CheckResult(){
+            const birthdayInput = document.getElementById("birthday");
+            const birthday = birthdayInput.value; 
+
+            const now = new Date().getFullYear();
+            const age = now - birthday;
+
+            const result = document.getElementById("result");
+            result.innerHTML = "Usia anda saat ini adalah " + age
+        }
+    </script>
+  </body>
+</html>
